@@ -29,6 +29,7 @@ public slots:
     void writeG(void);
     void writeB(void);
     void writeR(void);
+    void writeGold(void);
 
     void writeDefault(void);
 
@@ -41,12 +42,16 @@ private:
     QPushButton *gButton;
     QPushButton *rButton;
     QPushButton *bButton;
+    QPushButton *goldButton;
     QPushButton *defButton;
+
+    QLabel *label;
+    QLineEdit *lineEdit;
 
     QSerialPort     *m_serialPort;
     QByteArray      m_writeData;
     QTextStream     m_standardOutput;
-    qint64          m_bytesWritten;
-    QTimer          m_timer;
+    //qint64          m_bytesWritten;
+    //QTimer          m_timer;
 };
 

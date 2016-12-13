@@ -7,14 +7,17 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    m_serialPort = new QSerialPort(this);
-    m_serialPort->setBaudRate(115200);
+    m_serialPort    = new QSerialPort(this);
+    m_serialPort    ->setBaudRate(115200);
+    label           = new QLabel(this);
+    lineEdit        = new QLineEdit;
 
-    serConnect   = new QPushButton(this);
-    gButton      = new QPushButton(this);
-    rButton      = new QPushButton(this);
-    bButton      = new QPushButton(this);
-    defButton    = new QPushButton(this);
+    serConnect      = new QPushButton(this);
+    gButton         = new QPushButton(this);
+    rButton         = new QPushButton(this);
+    bButton         = new QPushButton(this);
+    goldButton      = new QPushButton(this);
+    defButton       = new QPushButton(this);
 
 
     connect(ui->serConnect, SIGNAL(clicked()),
@@ -26,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
                 this, SLOT(writeB()));
     connect(ui->rButton, SIGNAL(clicked()),
                 this, SLOT(writeR()));
+    connect(ui->goldButton, SIGNAL(clicked()),
+                this, SLOT(writeGold()));
     connect(ui->defButton, SIGNAL(clicked()),
                 this, SLOT(writeDefault()));
    }
@@ -39,8 +44,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::openPort(void)
 {
-    m_serialPort->setPortName("COM10");
-    m_serialPort->open(QIODevice::WriteOnly);
+    QString portName = ui->lineEdit->text();
+    m_serialPort->setPortName(portName);
+    if(m_serialPort->open(QIODevice::WriteOnly))
+    {
+        ui->label->clear();
+        ui->label->setText("Connected");
+    }
+    else
+    {
+        ui->label->clear();
+        ui->label->setText("Error");
+    }
+
 }
 
 void MainWindow::write(const QByteArray &writeData)
@@ -69,6 +85,13 @@ void MainWindow::writeR(void)
     m_writeData = "R";
 
     qint64 bytesWritten = m_serialPort->write("R");
+}
+
+void MainWindow::writeGold(void)
+{
+    m_writeData = "O";
+
+    qint64 bytesWritten = m_serialPort->write("O");
 }
 
 void MainWindow::writeDefault(void)

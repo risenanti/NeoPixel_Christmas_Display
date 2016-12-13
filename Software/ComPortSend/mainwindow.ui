@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>331</width>
-    <height>304</height>
+    <width>549</width>
+    <height>406</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>21</x>
-      <y>11</y>
-      <width>291</width>
-      <height>251</height>
+      <y>42</y>
+      <width>201</width>
+      <height>321</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -59,8 +59,54 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="goldButton">
+       <property name="text">
+        <string>Send Gold</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>40</y>
+      <width>181</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Enter Com Port</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Log</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>549</width>
+     <height>21</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
